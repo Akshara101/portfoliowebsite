@@ -1,0 +1,226 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #0d1b2a;
+    --secondary-color: #1b263b;
+    --accent-color: #415a77;
+    --highlight-color: #e0e1dd;
+    --background-color: #001f3f;
+    --extra-accent: #5c6784;
+}
+
+h3 {
+    color: rgb(255, 255, 255);
+    margin-bottom: 10px;
+}
+
+body {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+    background-color: var(--background-color);
+    color: var(--highlight-color);
+    font-family: 'Poppins', sans-serif;
+}
+
+header {
+    background-color: var(--primary-color);
+    color: var(--highlight-color);
+    padding: 20px;
+    text-align: center;
+    border-bottom: 4px solid var(--accent-color);
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    list-style: none;
+    padding: 15px;
+    background-color: var(--secondary-color);
+}
+
+nav ul li a {
+    color: var(--highlight-color);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: var(--accent-color);
+}
+
+.projects {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+}
+
+.project {
+    flex: 1 1 calc(30% - 20px);
+    background-color: var(--primary-color);
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
+}
+
+.project img {
+    width: 100%;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+    clip-path: circle(50% at 50% 50%);
+}
+
+.project:hover img {
+    transform: scale(1.05);
+    clip-path: circle(75% at 50% 50%);
+}
+
+.project.clicked {
+    transform: scale(1.1);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.8);
+}
+
+@media (max-width: 768px) {
+    .project {
+        flex: 1 1 calc(45% - 20px); 
+    }
+}
+
+@media (max-width: 480px) {
+    .project {
+        flex: 1 1 100%; 
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.project.fade-in {
+    animation: fadeIn 1s ease-out forwards;
+}
+
+footer {
+    background-color: var(--secondary-color);
+    color: var(--highlight-color);
+    padding: 20px;
+    text-align: center;
+}
+
+footer a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: var(--extra-accent);
+}
+
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #333;
+    transition: opacity 0.75s, visibility 0.75s;
+}
+
+.loader-hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.loader::after {
+    content: "";
+    width: 75px;
+    height: 75px;
+    border: 15px solid #000000;
+    border-top-color: #ffffff;
+    border-radius: 50%;
+    animation: loading 0.90s ease infinite;
+}
+
+@keyframes loading {
+    from {
+        transform: rotate(0turn);
+    }
+    to {
+        transform: rotate(1turn);
+    }
+}
+
+@media (max-width: 600px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .project {
+        flex: 1 1 100%;
+    }
+}
+
+@media (min-width: 601px) and (max-width: 1200px) {
+    .project {
+        flex: 1 1 calc(45% - 20px);
+    }
+}
+
+@media (min-width: 1201px) {
+    .project {
+        flex: 1 1 calc(30% - 20px);
+    }
+}
+
+.resume {
+    padding: 20px;
+    text-align: center;
+    background-color: var(--primary-color);
+    color: var(--highlight-color);
+    margin-top: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.resume-link {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.resume-link:hover {
+    color: var(--extra-accent);
+}
